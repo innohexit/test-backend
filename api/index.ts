@@ -4,7 +4,7 @@ import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import path from "path";
 
-import router from "./routes/allRoutes";
+import router from ".././routes/allRoutes";
 
 const app = express();
 
@@ -32,7 +32,7 @@ const swaggerDefinition = {
 
 const swaggerOptions = {
   swaggerDefinition,
-  apis: ["./routes/*.ts"],
+  apis: [".././routes/*.ts"],
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
@@ -52,3 +52,5 @@ app.use(router);
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
+
+module.exports = app;
