@@ -18,16 +18,6 @@ const swaggerDefinition = {
     version: "1.0.0",
     description: "API for Innohexit Team page (recruitment test)",
   },
-  servers: [
-    {
-      url: "http://localhost:3000",
-      description: "Development server",
-    },
-    {
-      url: "https://test-api.innohexit.in",
-      description: "Production server",
-    },
-  ],
 };
 
 const swaggerOptions = {
