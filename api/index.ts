@@ -14,9 +14,9 @@ app.use(cors());
 const swaggerDefinition = {
   openapi: "3.0.1",
   info: {
-    title: "Gravity Team API (recruitment test)",
+    title: "Innohexit Team API (recruitment test)",
     version: "1.0.0",
-    description: "API for Gravity Team page (recruitment test)",
+    description: "API for Innohexit Team page (recruitment test)",
   },
   servers: [
     {
@@ -34,6 +34,10 @@ const swaggerOptions = {
   swaggerDefinition,
   apis: ["./routes/*.ts"],
 };
+const options = {
+  customCssUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.18.3/swagger-ui.css",
+};
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
@@ -45,7 +49,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, options));
 
 app.use(router);
 
