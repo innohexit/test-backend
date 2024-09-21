@@ -3,8 +3,9 @@ import cors from "cors";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import path from "path";
+import serverless from "serverless-http";
 
-import router from "./routes/allRoutes";
+import router from "../routes/allRoutes";
 
 const app = express();
 
@@ -49,6 +50,9 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(router);
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+// app.listen(3000, () => {
+//   console.log("Server is running on port 3000");
+// });
+
+app.use("/.netlify/functions/api", router);
+export const handler = serverless(app);
