@@ -6,6 +6,7 @@ import path from "path";
 import serverless from "serverless-http";
 
 import router from "../routes/allRoutes";
+import { Handler, HandlerContext, HandlerEvent } from "@netlify/functions";
 
 const app = express();
 
@@ -51,4 +52,12 @@ app.use(router);
 // });
 
 app.use("/.netlify/functions/api", router);
-export const handler = serverless(app);
+
+const serverlessApp = serverless(app);
+
+const handler = async (event: HandlerEvent, context: HandlerContext) => {
+  const result = await serverlessApp(event, context);
+  return result;
+};
+
+export { handler };
