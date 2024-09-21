@@ -24,7 +24,7 @@ const swaggerDefinition = {
       description: "Development server",
     },
     {
-      url: "https://gravity-team-api.innohexit.in",
+      url: "https://test-api.innohexit.in",
       description: "Production server",
     },
   ],
